@@ -1,0 +1,123 @@
+use tripDB
+
+var user = {
+  "user" : "tripAdmin",
+  "pwd" : "tripAdmin",
+  roles : [
+      {
+          "role" : "readWrite",
+          "db" : "tripDB"
+      }
+  ]
+}
+
+db.createUser(user);
+
+db.users.insertMany([
+{
+    "userId" : "rider1",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "RIDER"
+    ]
+},
+{
+    "userId" : "rider2",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "RIDER"
+    ]
+},
+{
+    "userId" : "driver1",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "DRIVER"
+    ]
+},
+{
+    "userId" : "driver2",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "DRIVER"
+    ]
+},
+{
+    "userId" : "rider3",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "RIDER"
+    ]
+},
+{
+    "userId" : "admin1",
+    "password" : "$2a$10$5f9TNSlN3trZTroNC8iS4.y//t89di.6UjoV99T3LFoud3B8Wn24C",
+    "roles" : [ 
+        "ADMIN"
+    ]
+}
+]);
+
+
+db.trips.insertMany([
+{
+    tripId:"10001",
+    riderId:"rider1",
+    driverId:"driver1",
+    fromLocation:"ABC",
+    toLocation:"XYZ",
+    startTime:"01/01/2019 12:00:00",
+    endTime:"01/01/2019 13:00:00",
+    status:"COMPLETE"
+},
+{
+    tripId:"10002",
+    riderId:"rider2",
+    driverId:"driver1",
+    fromLocation:"BCD",
+    toLocation:"XYZ",
+    startTime:"01/02/2019 09:00:00",
+    endTime:"01/02/2019 10:30:00",
+    status:"COMPLETE" 
+},
+{
+    tripId:"10003",
+    riderId:"rider3",
+    driverId:"driver1",
+    fromLocation:"XYZ",
+    toLocation:"BCD",
+    startTime:"01/15/2019 13:00:00",
+    endTime:"01/15/2019 14:30:00",
+    status:"COMPLETE"  
+},
+{
+    tripId:"10004",
+    riderId:"rider3",
+    driverId:"driver2",
+    fromLocation:"XYZ",
+    toLocation:"BCD",
+    startTime:"01/16/2019 13:00:00",
+    endTime:"01/16/2019 14:30:00",
+    status:"COMPLETE"  
+},
+{
+    tripId:"10005",
+    riderId:"rider1",
+    driverId:"driver2",
+    fromLocation:"ABC",
+    toLocation:"XYZ",
+    startTime:"01/02/2019 12:00:00",
+    endTime:"01/02/2019 13:00:00",
+    status:"COMPLETE"
+},
+{
+    tripId:"10006",
+    riderId:"rider1",
+    driverId:"driver3",
+    fromLocation:"ZZZ",
+    toLocation:"BBB",
+    startTime:"01/12/2019 09:00:00",
+    endTime:"01/12/2019 11:00:00",
+    status:"COMPLETE"
+}
+]);

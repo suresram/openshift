@@ -1,0 +1,39 @@
+oc login --insecure-skip-tls-verify --server=https://master.na311.openshift.opentlc.com:443
+export TRIP_PRJ=bookaride-trip
+oc new-project $TRIP_PRJ
+
+oc adm policy add-role-to-group view system:serviceaccounts:travel-management -n travel-management
+oc new-app /home/suresh.r-cognizant.com/mongo.yaml
+
+
+ With parameters:
+        * Memory Limit=512Mi
+        * Namespace=openshift
+        * Database Service Name=mongodb
+        * MongoDB Connection Username=userF3F # generated
+        * MongoDB Connection Password=V0LippaAKT3DMw5B # generated
+        * MongoDB Database Name=tripdb
+        * MongoDB Admin Password=rfCfg6VXXeLteQgB # generated
+        * Volume Capacity=1Gi
+        * Version of MongoDB Image=3.6
+
+
+ oc get pods
+ oc rsh mongodb-1-7kmq2
+ mongo -u "userGY0" -p "K4blbepff0BMrFte" tripdb
+ps -eaf | grep mongod
+oc new-app suresram/travel-management-config-server:latest
+oc new-app suresram/travel-management-eureka-server:latest
+oc new-app suresram/travel-management-zuul-server:latest
+oc new-app suresram/travel-management-auth-server:latest
+oc new-app suresram/travel-management-trip-query-api:latest
+
+oc new-app suresram/travel-management-ui:latest
+
+oc expose dc/travel-management-eureka-server --port=8761
+
+oc expose svc/travel-management-config-server
+
+oc import-image suresram/travel-management-trip-query-api:latest
+
+oc expose dc/travel-management-ui --port=4200
