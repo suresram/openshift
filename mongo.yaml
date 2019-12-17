@@ -273,7 +273,7 @@
             "displayName": "MongoDB Database Name",
             "name": "MONGODB_DATABASE",
             "required": true,
-            "value": "tripdb"
+            "value": "eventdb"
         },
         {
             "description": "Password for the database admin user.",
